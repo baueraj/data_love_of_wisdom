@@ -21,7 +21,7 @@ def get_philosophical_domains(url):
     for header in headers:
         substr_start = [idx for idx, x in enumerate(str(header)) if x == '>'][1]
         substr_end = str(header).index(' </a')
-        domain = str(header)[(substr_start+1):substr_end] #add the number before the domain name
+        domain = str(header)[(substr_start+1):substr_end]
         domains.append(domain)
     domains = [f'{i+1}. {j}' for i, j in zip(range(len(domains)), domains)]
         
@@ -41,3 +41,5 @@ def write_domain_idea_ids(domain, domains, index_all_ideas_lines):
         for id in idea_ids_desired[:-1]:
             f.write('%s\n' % id)
         f.write('%s' % idea_ids_desired[-1])
+        
+    print(f'# of ideas: {len(idea_ids_desired)}')
